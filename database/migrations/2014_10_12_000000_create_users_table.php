@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('slug')->unique()->nullable();
             $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('user_type')->default(0)->comment('0 => user, 1 => admin');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

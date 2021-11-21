@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>{{ config('app.project') }}</title>
 
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    </head>
-    <body dir="rtl">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">خانه</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ورود</a>
+</head>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">ثبت نام</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+<body dir="rtl">
+    <div class="container-fluid w-100 bg-primary">
+        @if (Route::has('login'))
+        <div class="py-4 mx-auto d-flex justify-content-between align-items-center">
+            <a class="text-white text-decoration-none" href="{{ route('welcome') }}">{{ config('app.project') }}</a>
 
-            <div class="container">
+            <div class="">
+                @auth
+                <a href="{{ url('/home') }}" class="text-white text-decoration-none">خانه</a>
+                @else
+                <a href="{{ route('login') }}" class="text-white text-decoration-none">ورود</a>
 
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="mr-3 text-white text-decoration-none">ثبت نام</a>
+                @endif
+                @endauth
             </div>
         </div>
-    </body>
+        @endif
+
+    </div>
+
+    @if (Route::has('welcome'))
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <p class="text-white display-4">
+            مدیریت دانش آموزان
+        </p>
+    </div>
+    @endif
+</body>
+
 </html>
