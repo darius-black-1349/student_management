@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,27 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Admin Routes
+
+Route::prefix('admin')->namespace('Admin')->group(function(){
+
+    Route::get('/', [AdminController::class, 'index'])->name('admin.home');
+
+
+    // students Routes
+
+    Route::prefix('students')->group(function(){
+
+
+    });
+
+
+    // courses Routes
+
+    Route::prefix('courses')->group(function(){
+
+
+    });
+
+});

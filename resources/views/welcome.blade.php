@@ -1,45 +1,32 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.master')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.project') }}</title>
+@section('content')
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-</head>
-
-<body dir="rtl">
-    <div class="container-fluid w-100 bg-primary">
-        @if (Route::has('login'))
-        <div class="py-4 mx-auto d-flex justify-content-between align-items-center">
-            <a class="text-white text-decoration-none" href="{{ route('welcome') }}">{{ config('app.project') }}</a>
-
-            <div class="">
-                @auth
-                <a href="{{ url('/home') }}" class="text-white text-decoration-none">خانه</a>
-                @else
-                <a href="{{ route('login') }}" class="text-white text-decoration-none">ورود</a>
-
-                @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="mr-3 text-white text-decoration-none">ثبت نام</a>
-                @endif
-                @endauth
+@if (session('admin_access'))
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-warning alert-dismissible fade show d-flex" role="alert">
+                {{ session('admin_access') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </div>
-        @endif
-
     </div>
+</div>
+@endif
 
-    @if (Route::has('welcome'))
-    <div class="d-flex justify-content-center align-items-center mt-5">
-        <p class="text-white display-4">
-            مدیریت دانش آموزان
-        </p>
-    </div>
-    @endif
-</body>
 
-</html>
+@endsection
+
+
+@section('script')
+
+
+<script>
+    $('.alert').alert()
+</script>
+
+@endsection

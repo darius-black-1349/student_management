@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type',
     ];
 
     /**
@@ -41,4 +42,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin()
+    {
+        return $this->user_type == 1;
+    }
+
+    public function isUser()
+    {
+        return $this->user_type == 0;
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'permission_user');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
+
+    public function hasRole($roles)
+    {
+        return !! $roles->intersect($this->roles)->all();
+    }
+
+    public function hasPermission($permission)
+    {
+        return $this->permissions->contains('name', $permission->name) || $this->hasRole($permission->roles);
+    }
 }
