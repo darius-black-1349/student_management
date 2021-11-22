@@ -28,9 +28,9 @@
 
 
             <section class="sidebar-part-title">بخش کاربران</section>
-            <a href="" class="sidebar-link">
+            <a href="{{ route('admin.users.index') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
-                <span>کاربران ادمین</span>
+                <span>کاربران</span>
             </a>
             <a href="" class="sidebar-link">
                 <i class="fas fa-bars"></i>
