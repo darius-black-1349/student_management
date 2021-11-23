@@ -57,11 +57,11 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         Route::get('/', [PermissionController::class, 'index'])->name('admin.permissions.index');
         Route::get('/create', [PermissionController::class, 'create'])->name('admin.permissions.create');
-        Route::get('/show/{user}', [PermissionController::class, 'show'])->name('admin.permissions.show');
+        Route::get('/show/{permission}', [PermissionController::class, 'show'])->name('admin.permissions.show');
         Route::post('/store', [PermissionController::class, 'store'])->name('admin.permissions.store');
-        Route::get('/edit/{user}', [PermissionController::class, 'edit'])->name('admin.permissions.edit');
-        Route::put('/update/{user}', [PermissionController::class, 'update'])->name('admin.permissions.update');
-        Route::delete('/destroy/{user}', [PermissionController::class, 'destroy'])->name('admin.permissions.destroy');
+        Route::get('/edit/{permission}', [PermissionController::class, 'edit'])->name('admin.permissions.edit');
+        Route::put('/update/{permission}', [PermissionController::class, 'update'])->name('admin.permissions.update');
+        Route::delete('/destroy/{permission}', [PermissionController::class, 'destroy'])->name('admin.permissions.destroy');
     });
 
 
@@ -71,11 +71,11 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         Route::get('/', [RoleController::class, 'index'])->name('admin.roles.index');
         Route::get('/create', [RoleController::class, 'create'])->name('admin.roles.create');
-        Route::get('/show/{user}', [RoleController::class, 'show'])->name('admin.roles.show');
+        Route::get('/show/{role}', [RoleController::class, 'show'])->name('admin.roles.show');
         Route::post('/store', [RoleController::class, 'store'])->name('admin.roles.store');
-        Route::get('/edit/{user}', [RoleController::class, 'edit'])->name('admin.roles.edit');
-        Route::put('/update/{user}', [RoleController::class, 'update'])->name('admin.roles.update');
-        Route::delete('/destroy/{user}', [RoleController::class, 'destroy'])->name('admin.roles.destroy');
+        Route::get('/edit/{role}', [RoleController::class, 'edit'])->name('admin.roles.edit');
+        Route::put('/update/{role}', [RoleController::class, 'update'])->name('admin.roles.update');
+        Route::delete('/destroy/{role}', [RoleController::class, 'destroy'])->name('admin.roles.destroy');
     });
 
 

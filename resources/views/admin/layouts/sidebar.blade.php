@@ -32,7 +32,7 @@
                 <i class="fas fa-bars"></i>
                 <span>کاربران</span>
             </a>
-            <a href="" class="sidebar-link">
+            <a href="{{ route('admin.permissions.index') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>سطوح دسترسی</span>
             </a>
